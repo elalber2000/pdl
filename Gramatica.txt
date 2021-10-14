@@ -1,0 +1,80 @@
+Axioma = P
+
+NoTerminales = { P F H A K C B B1 B2 T S S1 L Q X E E1 R R1 U V V1 }
+
+Terminales = { let if else function tipoNumber tipoBoolean tipoCadena return alert input ap cp al cl pc c i mi id entero cadena m n ii }
+
+Producciones = {
+
+P ->  B P
+P ->  F P
+P -> lambda
+
+F ->  function H id ap A cp al C cl
+
+H -> T
+H -> lambda
+
+A -> T id K
+A -> lambda
+
+K -> c T id K
+K -> lambda
+
+C -> B C
+C -> lambda
+
+B -> if ap E cp B1
+B -> let T id pc
+B -> S
+
+B1 -> S
+B1 -> al C cl B2
+
+B2 -> lambda
+B2 -> else al C cl
+
+T -> tipoNumber
+T -> tipoBoolean
+T -> tipoCadena
+
+S -> id S1
+S -> alert ap E cp pc
+S -> input ap id cp pc
+S -> return X pc
+
+S1 -> i E pc
+S1 -> mi E pc
+S1 -> ap L cp pc
+
+L -> E Q
+L -> lambda
+
+Q -> c E Q
+Q -> lambda
+
+X -> E
+X -> lambda
+
+E -> R E1
+
+E1 -> ii R E1
+E1 -> lambda
+
+R -> U R1
+
+R1 -> m U R1
+R1 -> lambda
+
+U -> n U
+U -> V
+
+V ->  id V1
+V -> ap E cp
+V -> entero
+V -> cadena
+
+V1 -> ap L cp
+V1 -> lambda
+
+}
